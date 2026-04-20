@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Signup</title>
+    <style>
+        body{
+            font-family: Arial;
+            background-color:#f2f2f2;
+        }
+        .container{
+            width:400px;
+            margin:50px auto;
+            background:white;
+            padding:20px;
+            border-radius:8px;
+            box-shadow:0 0 10px gray;
+        }
+        input,select{
+            width:100%;
+            padding:8px;
+            margin:8px 0;
+        }
+        button{
+            width:100%;
+            padding:10px;
+            background:#28a745;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+        button:hover{
+            background:#218838;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Employee Signup</h2>
+
+<p th:text="${sucMsg}"></p>
+<p th:text = "${errMsg}"> </p>
+
+
+<form th:action="@{/added}" th:object="${employee}" method="post">
+
+	<input type="hidden" th:field="*{employeeId}" />
+
+
+    <label>Name</label>
+    <input type="text" th:field="*{employeeName}" placeholder="Enter Name">
+
+    <label>Email</label>
+    <input type="email" th:field="*{employeeEmail}" placeholder="Enter Email">
+
+    <label>Phone Number</label>
+    <input type="text" th:field="*{employeePhoneNo}" placeholder="Enter Phone Number">
+
+    <label>Department</label>
+    <input type="text" th:field="*{employeeDepartment}" placeholder="Enter Department">
+
+    <label>Salary</label>
+    <input type="number" step="0.01" th:field="*{employeeSalary}" placeholder="Enter Salary">
+
+    <label>City</label>
+    <input type="text" th:field="*{employeeCity}" placeholder="Enter City">
+
+    <button type="submit">Register</button>
+	
+	<a th:href="@{/view}" class="back-link">Back to Employee List </a>
+
+</form>
+
+</div>
+
+</body>
+</html>
